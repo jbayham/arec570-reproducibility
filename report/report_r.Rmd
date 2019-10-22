@@ -1,0 +1,73 @@
+---
+title: "GDP and Life Expectancy"
+author: "Jude Bayham"
+date: "October 15, 2019"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+
+lapply(c("tidyverse",
+         "stargazer"),
+       require,
+       character.only=T)
+
+gap.temp <- read_csv(file = "../analysis/input/data.csv")
+
+
+```
+
+## Canada
+
+Figure 1 shows that life expectancy has been increasing over time in Canada.  That is good.  
+
+Figure 2 shows that Canada's GDP per capita is also increasing over time.  Go Canada!  
+
+I wonder if these two data are correlated?
+
+```{r canada_le}
+gap.temp %>% 
+  dplyr::filter(country=="Canada") %>% 
+  mutate(year=as.integer(year)) %>%
+  ggplot(aes(x=year,y=lifeExp)) +
+  geom_line()
+```
+
+```{r canada_gdp}
+gap.temp %>% 
+  dplyr::filter(country=="Canada") %>% 
+  mutate(year=as.integer(year)) %>%
+  ggplot(aes(x=year,y=gdpPercap)) +
+  geom_line()
+```
+
+
+## Life Expectancy and GDP
+
+The objective of this analysis is to test whether GDP per capita leads to higher life expectancy.  We hypothesize that the relationship between GDP per capita and life expectancy is positive.  We regress life expectancy from 140 countries on GDP per capita to test our hypothesis.  The results are displayed in Table 1.
+
+
+
+```{r reg, results='asis'}
+
+
+# gap.temp %>%
+#   ggplot(aes(x=gdpPercap,y=lifeExp,label=country)) +
+#   geom_line() +
+#   geom_text(check_overlap = T)
+
+#regression
+life.model <- lm(data = gap.temp,lifeExp ~ gdpPercap)
+# summary(life.model)
+
+stargazer(life.model,title = "GDP on Life Expectancy",
+          type="latex",header=FALSE)
+
+
+```
+
+The coefficient on gdpPercap is positive and statistically significant at $\alpha=0.05$, which indicates that for every $10,000 increase in GDP per capita, life expectancy increases by five years.  
+
+We can conclude that by continually increasing GDP we can increase life expectancy.
+
+Further research should focus on the nonlinear relationship between life expectancy and GDP per capita.

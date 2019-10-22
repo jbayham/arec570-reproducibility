@@ -1,0 +1,81 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+ \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{GDP and Life Expectancy}
+\author{Jude}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+
+
+\maketitle
+
+\section{Canada}
+
+Figure \ref{fig:le} shows that life expectancy has been increasing over time in Canada.  That is good.  
+
+Figure \ref{fig:gdp} shows that Canad's GDP per capita is also increasing over time.  Go Canada!  
+
+I wonder if these two data are correlated?
+
+\begin{figure}
+\caption{Canadians are living longer }
+\label{fig:le}
+\centering
+\includegraphics[width=.7\textwidth]{analysis/output/canada_le.pdf}
+\end{figure}
+
+
+
+\begin{figure}
+\caption{Canadians are getting richer}
+\label{fig:gdp}
+\centering
+\includegraphics[width=.7\textwidth]{analysis/output/canada_gdp.pdf}
+\end{figure}
+
+
+
+
+\section{Life Expectancy and GDP}
+
+The objective of this analysis is to test whether GDP per capita leads to higher life expectancy.  We hypothesize that the relationship between GDP per capita and life expectancy is positive.  We regress life expectancy from 140 countries on GDP per capita to test our hypothesis.  The results are displayed in Table 1.
+
+\input{analysis/output/reg_out.tex}
+
+
+The coefficient on gdpPercap is positive and statistically significant at $\alpha=0.05$, which indicates that for every \$10,000 increase in GDP per capita, life expectancy increases by five years.  
+
+We can conclude that by continually increasing GDP we can increase life expectancy.
+
+Further research should focus on the nonlinear relationship between life expectancy and GDP per capita.
+
+
+
+\end{document}

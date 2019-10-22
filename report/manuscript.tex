@@ -1,0 +1,154 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={GDP and Life Expectancy},
+            pdfauthor={Jude Bayham},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{GDP and Life Expectancy}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Jude Bayham}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{October 15, 2019}
+
+
+\begin{document}
+\maketitle
+
+\hypertarget{canada}{%
+\subsection{Canada}\label{canada}}
+
+Figure 1 shows that life expectancy has been increasing over time in
+Canada. That is good.
+
+Figure 2 shows that Canad's GDP per capita is also increasing over time.
+Go Canada!
+
+I wonder if these two data are correlated?
+
+\includegraphics{manuscript_files/figure-latex/canada_le-1.pdf}
+
+\includegraphics{manuscript_files/figure-latex/canada_gdp-1.pdf}
+
+\hypertarget{life-expectancy-and-gdp}{%
+\subsection{Life Expectancy and GDP}\label{life-expectancy-and-gdp}}
+
+The objective of this analysis is to test whether GDP per capita leads
+to higher life expectancy. We hypothesize that the relationship between
+GDP per capita and life expectancy is positive. We regress life
+expectancy from 140 countries on GDP per capita to test our hypothesis.
+The results are displayed in Table 1.
+
+\begin{table}[!htbp] \centering 
+  \caption{GDP on Life Expectancy} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & lifeExp \\ 
+\hline \\[-1.8ex] 
+ gdpPercap & 0.0005$^{***}$ \\ 
+  & (0.0001) \\ 
+  & \\ 
+ Constant & 50.225$^{***}$ \\ 
+  & (0.540) \\ 
+  & \\ 
+\hline \\[-1.8ex] 
+Observations & 568 \\ 
+R$^{2}$ & 0.130 \\ 
+Adjusted R$^{2}$ & 0.128 \\ 
+Residual Std. Error & 11.472 (df = 566) \\ 
+F Statistic & 84.367$^{***}$ (df = 1; 566) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+The coefficient on gdpPercap is positive and statistically significant
+at \(\alpha=0.05\), which indicates that for every \$10,000 increase in
+GDP per capita, life expectancy increases by five years.
+
+We can conclude that by continually increasing GDP we can increase life
+expectancy.
+
+Further research should focus on the nonlinear relationship between life
+expectancy and GDP per capita.
+
+
+\end{document}
