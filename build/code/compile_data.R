@@ -1,5 +1,9 @@
 #This script compiles data on gdp and life expectancy 
 
+#complete the directory structure
+dir.create("analysis/input")
+dir.create("analysis/output")
+
 #Read in data from source csv
 le.df <- read_csv(file = "build/input/le_52-67.csv")
 gdp.df <- read_csv(file = "build/input/gdp_52-67.csv")
