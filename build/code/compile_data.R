@@ -4,7 +4,7 @@
 #Preliminaries
 if(!("pacman" %in% rownames(installed.packages()))) install.packages("pacman")
 library(pacman)
-p_load(tidyverse,lubridate,stargazer,rmarkdown)
+p_load(dplyr,ggplot2,readr,lubridate,stargazer,rmarkdown)
 
 
 #complete the directory structure
