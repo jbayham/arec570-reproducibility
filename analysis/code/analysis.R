@@ -2,12 +2,10 @@
 
 ####################################################
 #Preliminaries
-lapply(c("tidyverse",
-         "lubridate",
-         "stargazer",
-         "rmarkdown"),
-       require,
-       character.only=T)
+if(!("pacman" %in% rownames(installed.packages()))) install.packages("pacman")
+library(pacman)
+p_load(tidyverse,lubridate,stargazer,rmarkdown)
+
 
 #Read in the compiled dataset
 gap.temp <- read_csv(file = "analysis/input/data.csv")
