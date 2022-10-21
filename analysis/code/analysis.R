@@ -1,5 +1,14 @@
 #This script produces figures and tables for the report
 
+####################################################
+#Preliminaries
+lapply(c("tidyverse",
+         "lubridate",
+         "stargazer",
+         "rmarkdown"),
+       require,
+       character.only=T)
+
 #Read in the compiled dataset
 gap.temp <- read_csv(file = "analysis/input/data.csv")
 

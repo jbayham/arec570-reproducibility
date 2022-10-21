@@ -1,5 +1,14 @@
 #This script compiles data on gdp and life expectancy 
 
+####################################################
+#Preliminaries
+lapply(c("tidyverse",
+         "lubridate",
+         "stargazer",
+         "rmarkdown"),
+       require,
+       character.only=T)
+
 #complete the directory structure
 dir.create("analysis/input")
 dir.create("analysis/output")
